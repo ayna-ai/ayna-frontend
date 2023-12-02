@@ -4,7 +4,13 @@ import 'lib/models/brand.dart';
 import 'lib/services/brand_service.dart';
 
 class BrandsListViewModel {
+  final BrandService service = BrandService();
+
   Future<List<Brand>> getBrands() async {
-    // Todo* Implement logic to fetch brands from backend
+    try {
+      return await service.getBrands();
+    } catch (e) {
+      return Future.value([]); // Handle errors gracefully
+    }
   }
 }
